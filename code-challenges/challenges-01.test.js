@@ -94,14 +94,22 @@ Return the modified array.
 
 const addValues = (arr, value) => {
   // Solution code here...
-  let newArray=[];
-  newArray.push(value);
+
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
-  
+  let newArray = [];
+  arr.forEach((value, i) =>{
+    newArray[i] = value;
+  });
+  for(let i = 0; i < times; i++) {
+    callback(newArray, num);
+  }
+  return newArray;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 
@@ -138,10 +146,24 @@ Iterate over the array using forEach to determine the output based on several ru
 
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
-
+// it almost correct but I don't why not working!!
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let newArray=[];
+  arr.forEach((item , i)=>{
+    if (item % 3 === 0 && item %5 === 0 ){
+      newArray.push('Fizz Buzz');
+    } else if(item %3===0){
+      newArray.push('Fizz');
+    } else if(item %5===0){
+      newArray.push('Buzz');
+    }else if(item % 3 !== 0 && item %5 !== 0 ){
+      newArray.push(i);
+    }
+  });
+  return newArray;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -185,7 +207,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+xdescribe('Testing challenge 6', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -194,7 +216,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {

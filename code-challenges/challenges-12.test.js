@@ -3,14 +3,12 @@
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Write a function named replaceZeros that, given a string, uses Regex to replace all '0' with the word 'zero'.
+Write a function named replaceZeros that, given a string, uses Regex to replace all '0' with the word 'zero'. 
 ------------------------------------------------------------------------------------------------ */
 
-const replaceZeros = string => {
+const replaceZeros = (string) => {
   // Solution code here...
-  let regex = /0/g;
-  return string.replace(regex, 'zero');
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -20,10 +18,8 @@ Write a function named validatePin that uses a regular expression pattern to val
 If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
-const validatePin = pin => {
+const validatePin = (pin) => {
   // Solution code here...
-  let regex = /^(\d{4})$/g;
-  return regex.test(pin);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,10 +30,8 @@ Write a function named validateWord that uses a regular expression pattern to va
 If the word is between 5 and 10 characters long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
-const validateWord = word => {
+const validateWord = (word) => {
   // Solution code here...
-  let regex = /^[a-zA-Z]{5,10}$/g;
-  return regex.test(word);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,10 +42,8 @@ Write a function named hasNumber that uses a regular expression pattern to deter
 If it does, return true. If not, return false.
 ------------------------------------------------------------------------------------------------ */
 
-const hasNumber = string => {
+const hasNumber = (string) => {
   // Solution code here...
-  let regex = /([A-Za-z]\d)/g;
-  return regex.test(string);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,10 +62,8 @@ Return either true or false.
 Note: if you ever need to validate an email using a regex in practice, the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
 
-const validateEmail = email => {
+const validateEmail = (email) => {
   // Solution code here...
-  let regex = /^(\w+|\w+\.\w+)@\w+\.(com|net|org)$/g;
-  return regex.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,10 +87,8 @@ Your function should include a single regular expression pattern that matches an
 Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
-const validatePhoneNumber = phoneNumber => {
+const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  let regex = /^(\(\d{3}\)|\d{3})[-|\s]?\d{3}[-|\s]?\d{4}$/g;
-  return regex.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -128,9 +116,7 @@ Run your tests from the console: jest solutions-11.test.js
 
 describe('Testing challenge 1', () => {
   test('It should replace all the 0\'s with the word "zero"', () => {
-    expect(replaceZeros('301 is s0 much fun!')).toStrictEqual(
-      '3zero1 is szero much fun!'
-    );
+    expect(replaceZeros('301 is s0 much fun!')).toStrictEqual('3zero1 is szero much fun!');
   });
 });
 
@@ -189,7 +175,7 @@ describe('Testing challenge 5', () => {
     expect(validateEmail('joe.schmoe@codefellows.net')).toBeTruthy();
   });
 
-  test("It should fail things that aren't email addresses", () => {
+  test('It should fail things that aren\'t email addresses', () => {
     expect(validateEmail('justastring')).toBeFalsy();
     expect(validateEmail('missing@adomain')).toBeFalsy();
     expect(validateEmail('@noname.com')).toBeFalsy();
@@ -228,16 +214,9 @@ describe('Testing challenge 6', () => {
 
 xdescribe('Testing challenge 7', () => {
   test('It should return the closing tags', () => {
-    expect(
-      findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])
-    ).toStrictEqual(['/h1', '/p']);
+    expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
   });
   test('It should work if there are multiple closing tags in a single string', () => {
-    expect(
-      findTagNames([
-        '<div><h1>Hello, world!</h1></div>',
-        '<p>Welcome to my site</p>',
-      ])
-    ).toStrictEqual(['/h1', '/div', '/p']);
+    expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/div', '/p']);
   });
 });
